@@ -36,7 +36,7 @@ $(LIBMY): $(LIBOBJ)
 	ar s $(LIBMY)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBMY) $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBMY) $(LDFLAGS) -lm
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
