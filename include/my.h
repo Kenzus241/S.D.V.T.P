@@ -7,10 +7,10 @@
 
 #ifndef _MY_H
     #define _MY_H
-    #define RED "\033[31m"
-    #define GRN "\033[32m"
-    #define YEL "\033[33m"
-    #define RESET "\033[0m"
+    #define COLOR_RED "\033[31m"
+    #define COLOR_GRN "\033[32m"
+    #define COLOR_YEL "\033[33m"
+    #define COLOR_RESET "\033[0m"
 
     #include <unistd.h>
     #include <stdio.h>
@@ -21,5 +21,6 @@
 
 int process_launch(void);
 int game_loop(void);
+int launch_scan(void);
 
 #endif /*MY_H*/
