@@ -6,7 +6,8 @@
 */
 #include "my.h"
 
-bool GuiButton(Rectangle bounds, const char *text) {
+bool GuiButton(Rectangle bounds, const char *text)
+{
     Vector2 mousePoint = GetMousePosition();
     bool clicked = false;
     Color color = MAGENTA;
@@ -25,14 +26,14 @@ bool GuiButton(Rectangle bounds, const char *text) {
     }
     DrawRectangleRounded(bounds, roundness, segments, color);
     DrawRectangleRoundedLines(bounds, roundness, segments, PURPLE);
-    DrawText(text, (int)(bounds.x + (bounds.width/2 - textWidth/2)), 
-             (int)(bounds.y + (bounds.height/2 - 10)), 20, BLACK);
+    DrawText(text, (int)(bounds.x + (bounds.width / 2 - textWidth / 2)),
+             (int)(bounds.y + (bounds.height / 2 - 10)), 20, BLACK);
     return clicked;
 }
 
 int game_loop(void)
 {
-    Rectangle btnScan = { 300.0f, 180.0f, 200.0f, 60.0f };
+    Rectangle btnScan = { 300.0f, 299.0f, 200.0f, 60.0f };
     bool should_start_scan = false;
     Texture2D background;
 
@@ -42,9 +43,9 @@ int game_loop(void)
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(RAYWHITE);
-        DrawTexturePro(background, 
-            (Rectangle){ 0, 0, background.width, background.height }, 
-            (Rectangle){ 0, 0, 800, 450 }, 
+        DrawTexturePro(background,
+            (Rectangle){ 0, 0, background.width, background.height },
+            (Rectangle){ 0, 0, 800, 450 },
             (Vector2){ 0, 0 }, 0.0f, WHITE);
         if (should_start_scan) {
             DrawText("Scan en cours...", 330, 300, 20, RED);
@@ -55,14 +56,12 @@ int game_loop(void)
         }
         EndDrawing();
         if (should_start_scan) {
-            WaitTime(0.5); 
+            WaitTime(0.5);
             break;
         }
     }
-
     UnloadTexture(background);
     CloseWindow();
-
     if (should_start_scan) {
         launch_scan();
     }
