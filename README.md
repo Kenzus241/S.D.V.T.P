@@ -25,7 +25,7 @@ git clone https://github.com/Kenzus241/S.D.V.T.P.git
 cd S.D.V.T.P
 
 # Compiler le projet
-make ou make re
+make run
 
 # Lancer l'application
 ./wiztree
