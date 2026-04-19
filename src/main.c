@@ -44,6 +44,6 @@ int main(int argc, char **argv)
         print_usage();
         return 84;
     }
-    process_launch();
+    game_loop();
     return 0;
 }

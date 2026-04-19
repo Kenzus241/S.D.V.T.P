@@ -37,33 +37,41 @@ int game_loop(void)
     bool should_start_scan = false;
     Texture2D background;
 
+    SetTraceLogLevel(LOG_WARNING);
     InitWindow(800, 450, "S.D.V.T.P");
     background = LoadTexture("lib/my/image/S.D.V.T.P_icone.png");
     SetTargetFPS(60);
+
     while (!WindowShouldClose()) {
         BeginDrawing();
-        ClearBackground(RAYWHITE);
-        DrawTexturePro(background,
-            (Rectangle){ 0, 0, background.width, background.height },
-            (Rectangle){ 0, 0, 800, 450 },
-            (Vector2){ 0, 0 }, 0.0f, WHITE);
-        if (should_start_scan) {
-            DrawText("Scan en cours...", 330, 300, 20, RED);
-        } else {
-            if (GuiButton(btnScan, "Lancer le Scan")) {
-                should_start_scan = true;
+            ClearBackground(RAYWHITE);
+            DrawTexturePro(background,
+                (Rectangle){ 0, 0, background.width, background.height },
+                (Rectangle){ 0, 0, 800, 450 },
+                (Vector2){ 0, 0 }, 0.0f, WHITE);
+
+            if (should_start_scan) {
+            // 1. On dessine l'écran de chargement
+            BeginDrawing();
+            ClearBackground(BLACK);
+            DrawText("CALCUL DE LA RACINE EN COURS...", 200, 210, 20, WHITE);
+            DrawText("Veuillez patienter...", 320, 240, 15, WHITE);
+            EndDrawing(); // On force l'envoi à l'écran ICI
+            // 2. On laisse une micro-seconde au système pour afficher la fenêtre
+            // sans ça, le message n'apparaît jamais avant le freeze
+            WaitTime(0.1); 
+            // 3. MAINTENANT on lance le calcul lourd
+            launch_scan(); 
+            break; 
+            } else {
+                if (GuiButton(btnScan, "Lancer le Scan")) {
+                    should_start_scan = true;
+                }
             }
-        }
-        EndDrawing();
-        if (should_start_scan) {
-            WaitTime(0.5);
-            break;
-        }
+        if (!should_start_scan) EndDrawing();
     }
+
     UnloadTexture(background);
     CloseWindow();
-    if (should_start_scan) {
-        launch_scan();
-    }
     return 0;
 }

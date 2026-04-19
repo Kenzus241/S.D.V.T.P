@@ -10,10 +10,11 @@ CC      = epiclang
 CFLAGS  = -Wall -Wextra -Iinclude -g
 
 RAYLIB_FLAGS := $(shell pkg-config --cflags --libs raylib 2>/dev/null)
+
 ifdef RAYLIB_FLAGS
-	LDFLAGS := $(RAYLIB_FLAGS)
+    LDFLAGS := $(RAYLIB_FLAGS)
 else
-	LDFLAGS := -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+    LDFLAGS := -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 endif
 
 SRC_DIR = src
@@ -50,4 +51,8 @@ fclean: clean
 re: fclean all
 	$(RM) $(OBJ) $(LIBOBJ)
 
-.PHONY: all clean fclean re
+run: all
+	sudo ./$(NAME)
+	$(RM) $(OBJ) $(LIBOBJ)
+
+.PHONY: all clean fclean re run
