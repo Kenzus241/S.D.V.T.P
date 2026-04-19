@@ -1,3 +1,10 @@
+/*
+** PROJECT, 2026
+** S.D.V.T.P
+** File description:
+** launch_scan
+*/
+
 #include "my.h"
 
 // Calcule la taille d'un dossier SANS créer de nœuds (très rapide)

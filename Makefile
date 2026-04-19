@@ -1,11 +1,11 @@
 ##
-## EPITECH PROJECT, 2026
+## PROJECT, 2026
 ## S.D.V.T.P
 ## File description:
 ## this is the makefile of the project
 ##
 
-CC      = epiclang
+CC      = gcc
 
 CFLAGS  = -Wall -Wextra -Iinclude -g
 

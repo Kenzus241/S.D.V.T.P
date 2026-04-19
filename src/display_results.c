@@ -1,3 +1,10 @@
+/*
+** PROJECT, 2026
+** S.D.V.T.P
+** File description:
+** display_results
+*/
+
 #include "my.h"
 
 char *format_size(long long size)

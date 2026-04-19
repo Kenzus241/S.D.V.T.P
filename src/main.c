@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2026
+** PROJECT, 2026
 ** S.D.V.T.P
 ** File description:
 ** main
