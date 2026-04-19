@@ -29,3 +29,8 @@ make run
 
 # Lancer l'application
 ./wiztree
+
+
+
+# ATTENTION
+Le projet pourrais freeze j'y travaille actuellement
