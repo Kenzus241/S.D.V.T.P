@@ -52,7 +52,5 @@ re: fclean all
 	$(RM) $(OBJ) $(LIBOBJ)
 
 run: all
-	sudo ./$(NAME)
+	./$(NAME)
 	$(RM) $(OBJ) $(LIBOBJ)
-
-.PHONY: all clean fclean re run

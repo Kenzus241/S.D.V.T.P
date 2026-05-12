@@ -8,7 +8,7 @@
 
 void print_usage(void)
 {
-    printf("    Usage: " COLOR_GRN "./S.D.V.T.P\n" COLOR_RESET);
+    printf("    Usage: " COLOR_GRN "make run\n" COLOR_RESET);
     printf(COLOR_RED " Or\n" COLOR_RESET);
     printf("    Usage: " COLOR_GRN "./S.D.V.T.P" COLOR_RESET COLOR_YEL " -h (-h = help)\n" COLOR_RESET);
 }
