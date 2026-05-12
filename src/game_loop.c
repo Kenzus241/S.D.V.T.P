@@ -51,24 +51,25 @@ int game_loop(void)
                 (Vector2){ 0, 0 }, 0.0f, WHITE);
 
             if (should_start_scan) {
-            // 1. On dessine l'écran de chargement
-            BeginDrawing();
-            ClearBackground(BLACK);
-            DrawText("CALCUL DE LA RACINE EN COURS...", 200, 210, 20, WHITE);
-            DrawText("Veuillez patienter...", 320, 240, 15, WHITE);
-            EndDrawing(); // On force l'envoi à l'écran ICI
-            // 2. On laisse une micro-seconde au système pour afficher la fenêtre
-            // sans ça, le message n'apparaît jamais avant le freeze
-            WaitTime(0.1); 
-            // 3. MAINTENANT on lance le calcul lourd
-            launch_scan(); 
-            break; 
+                // Draw loading screen
+                ClearBackground(BLACK);
+                DrawText("CALCUL DE LA RACINE EN COURS...", 200, 210, 20, WHITE);
+                DrawText("Veuillez patienter...", 320, 240, 15, WHITE);
+                EndDrawing();
+                // Let system display the loading message
+                WaitTime(0.1);
+                // Close window before launching scan
+                UnloadTexture(background);
+                CloseWindow();
+                // Now launch the scan with its own window
+                launch_scan();
+                return 0;
             } else {
                 if (GuiButton(btnScan, "Lancer le Scan")) {
                     should_start_scan = true;
                 }
             }
-        if (!should_start_scan) EndDrawing();
+        EndDrawing();
     }
 
     UnloadTexture(background);

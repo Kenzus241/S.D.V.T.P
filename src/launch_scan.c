@@ -83,7 +83,15 @@ void expand_node(file_node_t *node)
 
 void launch_scan(void)
 {
-    file_node_t *root = create_node("/", "Root (/)");
-    root->size = get_path_size("/"); // Seul gros calcul au début
+    const char *start_path = getenv("HOME");
+    if (!start_path) start_path = "/root";
+    
+    char *display_name = malloc(strlen(start_path) + 20);
+    sprintf(display_name, "Home (%s)", start_path);
+    
+    file_node_t *root = create_node(start_path, display_name);
+    root->size = get_path_size(start_path);
     display_results_graphically(root);
+    
+    free(display_name);
 }
