@@ -35,7 +35,3 @@ make run
 - `src/game_loop.c` : interface d'accueil, bouton `Lancer le Scan`, chargement de l'image et transition vers le scan.
 - `src/launch_scan.c` : parcours récursif du dossier `HOME`, calcul des tailles de fichiers et gestion des dossiers ignorés.
 - `src/display_results.c` : affichage des résultats, navigation dans l'arborescence, scroll et confirmation de suppression.
-
-
-## ATTENTION
-Le projet pourrais freeze j'y travaille actuellement
